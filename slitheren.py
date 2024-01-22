@@ -90,7 +90,7 @@ class Slither10_game:
     def _move(self,direction):
         x = self.head.x
         y = self.head. y
-        if direction = Direction.RIGHT:
+        if direction == Direction.RIGHT:
             x += BLOCK_SIZE
         elif direction == Direction.LEFT:
             x -= BLOCK_SIZE
