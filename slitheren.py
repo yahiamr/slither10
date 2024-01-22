@@ -11,7 +11,7 @@ class Direction(Enum):
     UP = 3
     DOWN = 4
 
-Point = namedtuple('point','x','y')
+Point = namedtuple('point','x,y')
 BLOCK_SIZE = 20
 class Slither10_game:
 
@@ -22,7 +22,7 @@ class Slither10_game:
         # init display
         self.display = pygame.display.set_mode((self.w,self.h))
         pygame.display.set_caption('Slither10')
-        self.clock = pygame.time.clock()
+        self.clock = pygame.time.Clock()
         
         #init gamestate
         self.direction =  Direction.RIGHT
@@ -43,16 +43,25 @@ class Slither10_game:
             self._place_food()
 
     def play_step(self):
-        pass
+        # 1- collect user input
+        # 2- move 
+        # 3- check if gameover
+        # 4- place new food or just move
+        # 5- update ui and clock
+        # 6- return gameover and score
+        game_over = False
+        return game_over,self.score
 
 if __name__ == '__main__':
     game = Slither10_game()
 
     #game loop
     while True:
-        game.play_step()
+        game_over,score = game.play_step()
 
         # break if game over
-
+        if game_over == True:
+            break
+    print('Final score',score)
 
     pygame.quit()
