@@ -66,6 +66,8 @@ class Slither10_game:
                 elif event.key == pygame.K_DOWN:
                     self.direction = Direction.DOWN
         # 2- move 
+        self._move(self.direction)
+        self.snake.insert(0,self.head)
         # 3- check if gameover
         # 4- place new food or just move
         # 5- update ui and clock
@@ -85,6 +87,8 @@ class Slither10_game:
         text = font.render("Score: "+str(self.score),True,WHITE)
         self.display.blit(text,[0,0])
         pygame.display.flip()
+    def _move(self,direction):
+        pass
 
 if __name__ == '__main__':
     game = Slither10_game()
