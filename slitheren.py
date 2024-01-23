@@ -20,7 +20,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
-SPEED = 40
+SPEED = 4
 class Slither10_game:
 
 
@@ -69,6 +69,10 @@ class Slither10_game:
         self._move(self.direction)
         self.snake.insert(0,self.head)
         # 3- check if gameover
+        game_over = False
+        if self._is_collision():
+            game_over = True
+            return game_over,score
         # 4- place new food or just move
         # 5- update ui and clock
         self._update_ui()
@@ -94,11 +98,21 @@ class Slither10_game:
             x += BLOCK_SIZE
         elif direction == Direction.LEFT:
             x -= BLOCK_SIZE
-        elif direction = Direction. DOWN:
+        elif direction == Direction. DOWN:
             y += BLOCK_SIZE
         elif direction == Direction.UP:
             y -= BLOCK_SIZE
         self. head = Point (x, y)
+
+     
+    def _is_collision(self):
+        # hits boundary
+        if self.head.x > self.w - BLOCK_SIZE or self.head.x < 0 or self.head.y > self.h - BLOCK_SIZE or self.head.y < 0:
+            return True
+        # hits itself
+        if self.head in self.snake[1:]:
+            return True   
+        return False
 
 if __name__ == '__main__':
     game = Slither10_game()
