@@ -20,7 +20,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0,0,0)
 
 BLOCK_SIZE = 20
-SPEED = 4
+SPEED = 15
 class Slither10_game:
 
 
